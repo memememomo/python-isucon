@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+{% for article in articles %}
+<div class="article">
+<div class="title">{{ article.title }}</div>
+<div class="created">{{ article.created_at }}</div>
+<div class="body">
+{% set lines = article.body.split("\n") %}
+{%- for line in lines %}
+   {%- if loop.index <= 8 %}
+{{ line }}<br />
+{%- endif %}
+{%- endfor %}
+</div>
+<div class="articlelink">
+{% if lines|length > 8  %}
+... ...
+{% endif %}
+<a href="{{ url_for('show_article', article_id=article.id) }}">read more</a></div>
+</div>
+{% endfor %}
+{% endblock %}
+

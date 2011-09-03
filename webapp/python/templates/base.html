@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<title>isucon now!</title>
+<link type="text/css" href="{{ url_for('static', filename='css/jquery-ui-1.8.14.custom.css') }}" rel="stylesheet">
+<link type="text/css" href="{{ url_for('static', filename='css/isucon.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.6.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui-1.8.14.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/isucon.js') }}"></script>
+</head>
+<body>
+<div id="view">
+<div id="titleimage"><a href="{{ url_for('get_post') }}"><img src="{{ url_for('static', filename='images/isucon_title.jpg') }}" style="border: none;"></a></div>
+<div id="mainview">
+<div id="sidebar">
+<table>
+<tr><td>新着コメントエントリ</td></tr>
+{% for article in sidebaritems %}
+<tr><td><a href="{{ url_for('show_article', article_id=article.id) }}">{{ article.title }}</a></td></tr>
+{% endfor %}
+</table>
+</div>
+<div id="articleview">
+{% block content %}{% endblock %}
+</div>
+</div>
+</body>
+</html>

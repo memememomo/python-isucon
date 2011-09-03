@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="{{ url_for('post_post') }}">
+<table>
+<tr><td><input type="text" name="title" size="60"/></td></tr>
+<tr><td><textarea name="body" cols="60" rows="8"></textarea></td></tr>
+</table>
+<input type="submit"/>
+</form>
+{% endblock %}
+
